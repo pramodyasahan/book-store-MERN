@@ -88,6 +88,21 @@ async function main() {
         }
     });
 
+    app.delete('/api/books/:id', async (req, res) => {
+        try {
+            const {id} = req.params;
+            const result = await Book.findByIdAndDelete(id);
+
+            if (!result) {
+                return res.status(404).json({message: "Book not found"});
+            }
+            return res.status(200).send({message: "Book deleted successfully!"});
+        } catch (e) {
+            logger.error(e.message);
+            res.status(500).send({message: e.message});
+        }
+    });
+
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
         logger.info(`Server is running on port ${PORT}`);
