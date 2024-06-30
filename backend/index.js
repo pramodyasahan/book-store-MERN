@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose'
+import {Book} from './models/bookSchema.js'
 import {createLoggerWithChalk} from './logger.js';
 
 // Load environment variables from .env file
