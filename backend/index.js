@@ -32,14 +32,24 @@ async function main() {
         try {
             const books = await Book.find({});
             return res.status(200).json({
-                count: books.length,
-                data: books
+                count: books.length, data: books
             });
         } catch (e) {
             logger.error(e.message);
             res.status(500).send({message: e.message});
         }
-    })
+    });
+
+    app.get('/api/books/:id', async (req, res) => {
+        try {
+            const {id} = req.params;
+            const book = await Book.findById(id);
+            return res.status(200).json(book);
+        } catch (e) {
+            logger.error(e.message);
+            res.status(500).send({message: e.message});
+        }
+    });
 
     app.post('/api/books', async (req, res) => {
         try {
@@ -58,7 +68,7 @@ async function main() {
             logger.error(e.message);
             res.status(500).send({message: e.message});
         }
-    })
+    });
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
