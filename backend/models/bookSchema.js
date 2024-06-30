@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const bookSchema = mongoose.Schema({
+const bookSchema = new mongoose.Schema({
     title: {
         type: String, require: true
     }, author: {
@@ -10,4 +10,5 @@ const bookSchema = mongoose.Schema({
     },
 }, {timestamps: true})
 
-export const Book = mongoose.connect('Book', bookSchema)
+const Book = mongoose.model('Book', bookSchema);
+export default Book;
