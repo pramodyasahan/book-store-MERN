@@ -1,1 +1,1 @@
-# bookstore-ts-mern
+# book-store-MERN
