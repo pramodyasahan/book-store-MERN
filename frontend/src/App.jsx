@@ -7,13 +7,15 @@ import ShowBook from './pages/ShowBook.jsx';
 import NewBook from './pages/NewBook.jsx';
 
 const App = () => {
-    return (<Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/api/books/new' element={<NewBook/>}/>
-        <Route path='/api/books/details/:id' element={<ShowBook/>}/>
-        <Route path='/api/books/edit/:id' element={<EditBook/>}/>
-        <Route path='/api/books/delete/:id' element={<DeleteBook/>}/>
-    </Routes>)
-}
+    return (
+        <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/books/new' element={<NewBook/>}/>
+            <Route path='/books/details/:id' element={<ShowBook/>}/>
+            <Route path='/books/edit/:id' element={<EditBook/>}/>
+            <Route path='/books/delete/:id' element={<DeleteBook/>}/>
+        </Routes>
+    );
+};
 
-export default App
+export default App;

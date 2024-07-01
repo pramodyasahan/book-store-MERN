@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose'
-import cors from 'cors'
+import mongoose from 'mongoose';
+import cors from 'cors';
 import booksRoute from "./routes/booksRoute.js";
 import {createLoggerWithChalk} from './logger.js';
 
@@ -22,20 +22,17 @@ async function main() {
 
     const app = express();
 
-    // middleware for parsing request body
+    // Middleware for parsing request body
     app.use(express.json());
 
-    // middleware for handling CORS POLICY
-    app.use(cors());
+    // Middleware for handling CORS policy
     app.use(cors({
-        origin: 'http://localhost:3000',
-        method: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['content-type'],
+        origin: 'http://localhost:5173', methods: ['GET', 'POST', 'PUT', 'DELETE'], allowedHeaders: ['Content-Type'],
     }));
 
     app.get('/', (req, res) => {
         res.send("Home page")
-    })
+    });
 
     app.use('/api/books', booksRoute);
 

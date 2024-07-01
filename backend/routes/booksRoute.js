@@ -1,5 +1,9 @@
 import Book from "../models/bookSchema.js";
 import express from "express";
+import {createLoggerWithChalk} from '../logger.js';
+
+const logger = await createLoggerWithChalk();
+logger.info('Logger initialized in routes successfully');
 
 const router = express.Router();
 
